@@ -1,0 +1,14 @@
+es:
+  spree:
+    featured_product: 'Productos Recomendados'
+    new_featured_product: 'Nuevo Producto Recomendado'
+    listing_featured_products: 'Listado de Productos Recomendados'
+    featured_products:
+      create: 'Producto Recomendado agregado exitosamente.'
+      update: 'Producto Recomendado actualizado exitosamente.'
+      destroy: 'Producto Recomendado eliminado exitosamente.'
+  activerecord:
+    models:
+      featured_product:
+        one: 'Producto Recomendado'
+        other: 'Productos Recomendados'

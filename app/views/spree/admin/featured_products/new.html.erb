@@ -1,0 +1,22 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:new_featured_product) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back_to_featured_products_list), spree.admin_featured_products_path, :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @featured_product } %>
+
+
+<%= form_for [:admin, @featured_product] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>
+

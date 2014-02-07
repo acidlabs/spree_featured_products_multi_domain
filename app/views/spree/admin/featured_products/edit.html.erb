@@ -1,0 +1,20 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_featured_product) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:back_to_eatured_products), spree.admin_eatured_product_path, :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @eatured_product } %>
+
+<%= form_for [:admin, @eatured_product] do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

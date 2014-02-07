@@ -1,0 +1,10 @@
+<div class="featured-products col-md-12 col-xs-12">
+    <% @featured_products.each do |product| %>
+      <div class='col-md-3'>
+        <%= link_to small_image(product, itemprop: 'image'), product.product, itemprop: 'url' %>
+          <p>
+            <%= product.name %>
+          </p>
+      </div>
+    <% end %>
+</div>

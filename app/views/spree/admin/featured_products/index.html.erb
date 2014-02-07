@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_featured_products) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t(:new_featured_product), new_admin_featured_product_path, :icon => 'icon-plus', :id => 'admin_new_featured_product' %>
+  </li>
+<% end if can? :edit, Spree::FeaturedProduct.new %>
+
+<% if @featured_products.count != 0 %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= Spree.t(:product) %></th>
+        <th class='actions'></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @featured_products.each do |product| %>
+        <tr>
+          <td><%= product.product.name %></td>
+          <td class='actions'>
+            <%= link_to_edit product.id, no_text: true %>
+            <%= link_to_delete product, no_text: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: "featured items") %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_featured_product_path %>!
+  </div>
+<% end %>
+<br>
