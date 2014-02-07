@@ -1,5 +1,5 @@
-SpreeFeaturedProducts
-=====================
+spree_featured_products
+=======================
 
 Introduction goes here.
 
