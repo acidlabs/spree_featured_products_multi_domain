@@ -13,6 +13,7 @@
     <thead>
       <tr>
         <th><%= Spree.t(:product) %></th>
+        <th><%= Spree.t(:store) %></th>
         <th class='actions'></th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
       <% @featured_products.each do |product| %>
         <tr>
           <td><%= product.product.name %></td>
+          <td><%= product.store_name %></td>
           <td class='actions'>
             <%= link_to_edit product.id, no_text: true %>
             <%= link_to_delete product, no_text: true %>

@@ -1,6 +1,8 @@
 <div data-hook="admin_shipping_category_form_fields">
   <div data-hook="name" class="field align-center">
+    <%= label_tag Spree.t(:store) %><br>
+    <%= f.collection_select(:store_id, @stores, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', data: { url: admin_products_path(format: :json) } }) %>
     <%= label_tag Spree.t(:product) %><br>
-    <%= f.collection_select(:product_id, @products, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
+    <%= f.collection_select(:product_id, nil, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
   </div>
 </div>

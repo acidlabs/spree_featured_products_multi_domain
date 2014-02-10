@@ -1,6 +1,7 @@
 class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceController
 
   before_action :set_featured_product, only: [:show, :edit, :update, :destroy]
+  before_action :load_stores, only: [:new, :edit]
 
   def index
     @featured_products = Spree::FeaturedProduct.all
@@ -45,6 +46,10 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
 
   def set_featured_product
     @featured_product = Spree::FeaturedProduct.find params[:id]
+  end
+
+  def load_stores
+    @stores = Store.order(:name)
   end
 
   def featured_product_params
