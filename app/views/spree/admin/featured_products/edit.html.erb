@@ -6,15 +6,19 @@
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to Spree.t(:back_to_eatured_products), spree.admin_eatured_product_path, :icon => 'icon-arrow-left' %>
+    <%= button_link_to Spree.t(:back_to_eatured_products), spree.admin_featured_products_path, :icon => 'icon-arrow-left' %>
   </li>
 <% end %>
 
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @eatured_product } %>
 
-<%= form_for [:admin, @eatured_product] do |f| %>
+<%= form_for [:admin, @featured_product] do |f| %>
   <fieldset class="no-border-top">
     <%= render :partial => 'form', :locals => { :f => f } %>
+    <div data-hook="product" class="field align-center">
+      <%= label_tag Spree.t(:product) %><br>
+      <%= f.collection_select(:product_id, @products, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
+    </div>
     <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
   </fieldset>
 <% end %>

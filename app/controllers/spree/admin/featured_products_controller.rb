@@ -16,7 +16,7 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
   end
 
   def edit
-    @products = Spree::Product.all
+    @products = Spree::Product.by_store(@featured_product.store_id)
   end
 
   def create
@@ -24,7 +24,7 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
     respond_to do |format|
       if @featured_product.save
         flash[:success] = Spree.t(:create, scope: [:featured_products])
-        format.html { redirect_to spree.admin_featured_products_url }
+        format.html { redirect_to spree.edit_admin_featured_product_path(@featured_product) }
       else
         render :new
       end
@@ -35,7 +35,7 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
     respond_to do |format|
       if @featured_product.update_attributes(featured_product_params)
         flash[:success] = Spree.t(:update, scope: [:featured_products])
-        format.html { redirect_to spree.admin_featured_products_url }
+        format.html { redirect_to spree.edit_admin_featured_product_path(@featured_product) }
       else
         render :edit
       end
@@ -49,10 +49,10 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
   end
 
   def load_stores
-    @stores = Store.order(:name)
+    @stores = Spree::Store.order(:name)
   end
 
   def featured_product_params
-    params.require(:featured_product).permit(:name, :product_id)
+    params.require(:featured_product).permit(:name, :product_id, :store_id)
   end
 end
