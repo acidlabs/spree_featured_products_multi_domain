@@ -3,5 +3,11 @@
     <%= label_tag Spree.t(:store) %><br>
     <%= f.collection_select(:store_id, @stores, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2', data: { url: admin_products_path(format: :json) } }) %>
     <br>
+    <% unless @featured_product.store_id.nil? %>
+      <div data-hook="product" class="field align-center">
+        <%= label_tag Spree.t(:product) %><br>
+        <%= f.collection_select(:product_id, @products, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
+      </div>
+    <% end %>
   </div>
 </div>
