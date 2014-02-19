@@ -5,7 +5,7 @@ module Spree
     private
 
     def set_featured_products
-      @featured_products = Spree::FeaturedProduct.all
+      @featured_products = Spree::FeaturedProduct.by_store(current_store.id)
     end
   end
 end

@@ -3,6 +3,7 @@ es:
     featured_product: 'Productos Recomendados'
     new_featured_product: 'Nuevo Producto Recomendado'
     listing_featured_products: 'Listado de Productos Recomendados'
+    back_to_featured_products_list: 'Volver al Listado'
     featured_products:
       create: 'Producto Recomendado agregado exitosamente.'
       update: 'Producto Recomendado actualizado exitosamente.'
