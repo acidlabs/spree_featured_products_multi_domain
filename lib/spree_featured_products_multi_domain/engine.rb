@@ -1,8 +1,8 @@
-module SpreeFeaturedProducts
+module SpreeFeaturedProductsMultiDomain
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_featured_products'
+    engine_name 'spree_featured_products_multi_domain'
 
     config.autoload_paths += %W(#{config.root}/lib)
 

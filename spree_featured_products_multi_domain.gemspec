@@ -1,7 +1,7 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_featured_products'
+  s.name        = 'spree_featured_products_multi_domain'
   s.version     = '2.1.4'
   s.summary     = 'Spree extension to list selected products in homepage'
   s.description = 'Spree extension to list selected products in homepage'

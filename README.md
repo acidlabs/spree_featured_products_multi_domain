@@ -9,14 +9,14 @@ Installation
 Add spree_featured_products to your Gemfile:
 
 ```ruby
-gem 'spree_featured_products'
+gem 'spree_featured_products_multi_domain'
 ```
 
 Bundle your dependencies and run the installation generator:
 
 ```shell
 bundle
-bundle exec rails g spree_featured_products:install
+bundle exec rails g spree_featured_products_multi_domain:install
 ```
 
 Testing
@@ -34,7 +34,7 @@ When testing your applications integration with this extension you may use it's 
 Simply add this require statement to your spec_helper:
 
 ```ruby
-require 'spree_featured_products/factories'
+require 'spree_featured_products_multi_domain/factories'
 ```
 
 Copyright (c) 2014 [name of extension creator], released under the New BSD License
