@@ -26,7 +26,7 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
         flash[:success] = Spree.t(:create, scope: [:featured_products])
         format.html { redirect_to spree.edit_admin_featured_product_path(@featured_product) }
       else
-        render :new
+        format.html { render :new }
       end
     end
   end
@@ -37,7 +37,7 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
         flash[:success] = Spree.t(:update, scope: [:featured_products])
         format.html { redirect_to spree.edit_admin_featured_product_path(@featured_product) }
       else
-        render :edit
+        format.html { render :edit }
       end
     end
   end

@@ -5,6 +5,8 @@ class Spree::FeaturedProduct < ActiveRecord::Base
   delegate :name, to: :product
   delegate :name, to: :store, prefix: true
 
-  scope :by_store, lambda { |store_id| where(store_id: store_id ) }
+  scope :by_store, -> (store_id) { where(store_id: store_id ) }
+
+  validates :store_id, presence: true
 
 end

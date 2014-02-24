@@ -18,6 +18,7 @@ require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'ffaker'
+require 'paperclip/matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -30,7 +31,7 @@ require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/url_helpers'
 
 # Requires factories defined in lib/spree_featured_products/factories.rb
-require 'spree_featured_products/factories'
+  require 'spree_featured_products_multi_domain/factories'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -43,6 +44,13 @@ RSpec.configure do |config|
   # current_path.should eql(spree.products_path)
   config.include Spree::TestingSupport::UrlHelpers
 
+  config.include Paperclip::Shoulda::Matchers
+
+  config.include Devise::TestHelpers, :type => :controller
+
+  config.include Spree::TestingSupport::ControllerRequests, :type => :controller
+
+  Spree::Core::Engine.routes.default_url_options[:host] = 'test.host'
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
