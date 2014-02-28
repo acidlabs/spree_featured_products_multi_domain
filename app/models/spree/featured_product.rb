@@ -2,7 +2,7 @@ class Spree::FeaturedProduct < ActiveRecord::Base
   belongs_to :product
   belongs_to :store
   delegate :images, to: :product
-  delegate :name, to: :product
+  delegate :name, to: :product, prefix: true
   delegate :variant_images, to: :product
   delegate :name, to: :store, prefix: true
 
