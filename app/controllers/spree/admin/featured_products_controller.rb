@@ -1,7 +1,8 @@
 class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceController
 
-  before_action :set_featured_product, only: [:show, :edit, :create, :update, :destroy]
+  before_action :set_featured_product, only: [:show, :edit, :update, :destroy]
   before_action :load_stores, only: [:new, :edit]
+  before_action :load_products_by_store, only: [:edit, :update]
 
   def index
     @featured_products = Spree::FeaturedProduct.all
@@ -16,7 +17,6 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
   end
 
   def edit
-    @products = Spree::Product.by_store(@featured_product.store_id)
   end
 
   def create
@@ -50,6 +50,10 @@ class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceControlle
 
   def load_stores
     @stores = Spree::Store.order(:name)
+  end
+
+  def load_products_by_store
+    @products = Spree::Product.by_store(@featured_product.store_id)
   end
 
   def featured_product_params
