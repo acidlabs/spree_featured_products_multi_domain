@@ -6,5 +6,6 @@ class Spree::FeaturedProduct < ActiveRecord::Base
   delegate :name, to: :store, prefix: true
 
   scope :by_store, lambda { |store_id| where(store_id: store_id ) }
-
+  
+  scope :by_taxonomy, lambda { |name| joins(product: [taxons: :taxonomy]).where(spree_taxonomies: {name: name}) }
 end
