@@ -1,6 +1,6 @@
 class Spree::Admin::FeaturedProductsController < Spree::Admin::ResourceController
 
-  before_action :set_featured_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_featured_product, only: [:show, :edit, :create, :update, :destroy]
   before_action :load_stores, only: [:new, :edit]
 
   def index
