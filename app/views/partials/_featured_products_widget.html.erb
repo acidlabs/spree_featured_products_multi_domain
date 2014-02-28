@@ -1,7 +1,8 @@
 <div class="featured-products col-md-12 col-xs-12">
-    <% @featured_products.each do |product| %>
+    <% @featured_products.each do |featured_product| %>
       <div class='col-md-3'>
-        <%= link_to small_image(product, itemprop: 'image'), product.product, itemprop: 'url' %>
+        <% product = featured_product.product %>
+        <%= link_to small_image(product, itemprop: 'image'), product, itemprop: 'url' %>
           <p>
             <%= product.name %>
           </p>
