@@ -8,6 +8,7 @@ class Spree::FeaturedProduct < ActiveRecord::Base
 
   scope :by_store, -> (store_id) { where(store_id: store_id ) }
 
-  validates :store_id, presence: true
+  scope :by_taxonomy, lambda { |name| joins(product: [taxons: :taxonomy]).where(spree_taxonomies: {name: name}) }
 
+  validates :store_id, presence: true
 end
